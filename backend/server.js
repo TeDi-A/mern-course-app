@@ -4,6 +4,13 @@ const cors = require('cors');
 
 const app = express()
 
+app.use(cors(
+    {
+        origin: ["https://mern-project2-tedi-a-tedi-as-projects.vercel.app/"],
+        methods: ["POST", "GET"],
+        credentials: true
+    }
+));
 
 app.use(express.json())
 
