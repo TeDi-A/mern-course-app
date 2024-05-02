@@ -14,7 +14,6 @@ app.use(cors(
 
 app.use(express.json())
 
-const MONGODB_URL = process.env.MONGODB_URL;
 const PORT = process.env.PORT || 4000;
 
 mongoose.connect('mongodb+srv://tediadjene:raiden74739@cluster-0.ecjyzgn.mongodb.net/test?retryWrites=true&w=majority')
