@@ -20,6 +20,7 @@ mongoose.connect('mongodb+srv://tediadjene:raiden74739@cluster-0.ecjyzgn.mongodb
 
 app.get("/", (req, res) => {
     res.json("Hello");
+    console.log("Active now")
 })
 
 app.listen(PORT, () => {
