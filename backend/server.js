@@ -4,13 +4,6 @@ const cors = require('cors');
 
 const app = express()
 
-app.use(cors(
-    {
-        origin: ["https://mern-project2-backend.vercel.app/"],
-        methods: ["GET"],
-        credentials: true
-    }
-));
 
 app.use(express.json())
 
