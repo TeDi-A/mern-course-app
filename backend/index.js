@@ -12,8 +12,8 @@ const PORT = process.env.PORT || 4000;
 mongoose.connect('mongodb+srv://tediadjene:raiden74739@cluster-0.ecjyzgn.mongodb.net/test?retryWrites=true&w=majority')
 
 app.get("/", (req, res) => {
-    res.json("Hello");
     console.log("Active now")
+    res.json("Congratulations🎉!!! Backend is active & running👍");
 })
 
 app.listen(PORT, () => {
