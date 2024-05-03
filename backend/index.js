@@ -9,7 +9,7 @@ app.use(express.json())
 
 const PORT = process.env.PORT || 4000;
 
-mongoose.connect('mongodb+srv://tediadjene:raiden74739@cluster-0.ecjyzgn.mongodb.net/test?retryWrites=true&w=majority')
+// mongoose.connect('mongodb+srv://tediadjene:raiden74739@cluster-0.ecjyzgn.mongodb.net/test?retryWrites=true&w=majority')
 
 app.get("/", (req, res) => {
     console.log("Active now")
