@@ -8,10 +8,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 4000;
 
-app.get("/", (req, res) => {
-    res.send("Running on MERN Deploy Practice");
-    console.log("Active now🟢");
-});
+app.use(express.static('dist'))
 
 app.get("/api/message", (req, res) => {
     res.send([{
