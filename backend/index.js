@@ -19,8 +19,8 @@ mongoose.connection.on('connected', () => {
 
 app.use('/api', classRoutes)
 
-app.get('*', (req, res) => {
-    res.sendFile(__dirname + "/dist", 'index.html');
+app.get('/', (req, res) {
+  res.render('default.html');
 });
 
 const atlasConnectionUri = process.env.MONGODB_URL;
