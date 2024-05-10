@@ -1,35 +1,41 @@
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import CoursePage from "./pages/CoursePage";
+import Home from "./pages/Home";
 import "./App.css";
+import StudentPage from "./pages/StudentPage";
 
 function App() {
   const [message, setMessage] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/message");
-        const data = await response.json();
-        setMessage(data);
-        console.log("Done!");
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  async function handleClick() {
+    const response = await fetch("/api/all");
+    const data = await response.json();
+    setMessage(data);
+  }
 
   return (
-    <div>
-      <h1>Hello Users</h1>
-      {/* Render each user */}
-      {message.map(user => (
-        <div key={user.id}>
-          <p>ID: {user.id}</p>
-          <p>Name: {user.name}</p>
-        </div>
-      ))}
-    </div>
+    <BrowserRouter>
+
+      <h1>MERN Stack Classes App</h1>
+
+      <Routes>
+        <Route
+          path="/"
+          element={<Home />}
+        />
+        <Route
+          path="/classes"
+          element={<CoursePage />}
+        />
+        <Route
+          path="/students"
+          element={<StudentPage />}
+        />
+      </Routes>
+
+    </BrowserRouter>
   );
 }
 
