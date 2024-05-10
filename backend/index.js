@@ -20,14 +20,6 @@ mongoose.connection.on('connected', () => {
 
 app.use('/api', classRoutes)
 
-Class.insertMany(subjects)
-    .then(() => {
-        console.log('Subjects data inserted successfully.');
-    })
-    .catch(error => {
-        console.error('Error inserting subjects data:', error);
-    });
-
 const atlasConnectionUri = process.env.MONGODB_URL;
 mongoose.connect(atlasConnectionUri, {
     dbName: 'subjects'
