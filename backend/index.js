@@ -19,6 +19,10 @@ mongoose.connection.on('connected', () => {
 
 app.use('/api', classRoutes)
 
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+});
+
 const atlasConnectionUri = process.env.MONGODB_URL;
 mongoose.connect(atlasConnectionUri, {
     dbName: 'subjects'
