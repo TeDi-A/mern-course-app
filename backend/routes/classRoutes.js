@@ -1,5 +1,5 @@
 const express = require('express')
-const Class = require('../schema/ClassSchema')
+const Class = require('../schema/classSchema')
 const classRouter = express.Router()
 
 classRouter.get('/all', async (req, res) => {
