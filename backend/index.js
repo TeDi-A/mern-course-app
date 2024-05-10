@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
-const Class = require('./schema/classSchema')
 const classRoutes = require('./routes/classRoutes')
 
 const PORT = process.env.PORT || 4000;
