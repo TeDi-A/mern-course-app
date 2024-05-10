@@ -2,7 +2,7 @@ const express = require('express')
 const Class = require('../schema/classSchema')
 const classRouter = express.Router()
 
-classRouter.get('/all', async (req, res) => {
+classRouter.get('/classes', async (req, res) => {
     try {
         const classes = await Class.find({}).sort({ createdAt: -1 });
         res.status(200).json(classes);
