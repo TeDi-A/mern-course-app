@@ -20,7 +20,7 @@ mongoose.connection.on('connected', () => {
 app.use('/api', classRoutes)
 
 app.get('/', (req, res) {
-  res.render('default.html');
+  res.send('Hello');
 });
 
 const atlasConnectionUri = process.env.MONGODB_URL;
