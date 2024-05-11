@@ -7,16 +7,13 @@ const classRoutes = require('./routes/classRoutes')
 
 const PORT = process.env.PORT || 4000;
 
-app.use(express.static(__dirname + "/dist"))
-
-
+app.use('/', express.static(__dirname + "/dist"))
 
 mongoose.connection.on('connected', () => {
     console.log('Connected to MongoDB Atlas');
 });
 
 app.use('/api', classRoutes)
-
 
 const atlasConnectionUri = process.env.MONGODB_URL;
 mongoose.connect(atlasConnectionUri, {
