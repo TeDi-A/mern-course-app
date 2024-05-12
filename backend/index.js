@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path')
 require('dotenv').config();
 
 const app = express();
@@ -24,7 +25,7 @@ mongoose.connect(atlasConnectionUri, {
     dbName: 'subjects'
 });
 
-app.get('/*', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
