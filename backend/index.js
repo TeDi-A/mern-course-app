@@ -10,10 +10,6 @@ const PORT = process.env.PORT || 4000;
 
 app.use(express.static(__dirname + "/dist"))
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/dist', 'index.html'));
-});
-
 mongoose.connection.on('connected', () => {
     console.log('Connected to MongoDB Atlas');
 });
