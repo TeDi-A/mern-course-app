@@ -13,7 +13,7 @@ function CoursePage() {
         const loadCourses = async () => {
             try {
                 const response = await fetch(
-                    "api/all"
+                    "/api/all"
                 );
                 const data = await response.json();
                 setMessage(data);

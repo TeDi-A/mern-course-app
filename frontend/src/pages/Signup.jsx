@@ -38,7 +38,7 @@ const Signup = () => {
 
         try {
             const response = await axios.post(
-                "api/signup",
+                "/api/signup",
                 { ...inputValue },
                 { withCredentials: true }
             );

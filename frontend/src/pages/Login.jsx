@@ -37,7 +37,7 @@ const Login = () => {
         try {
             // `${baseURL}/login`
             const { data } = await axios.post(
-                "api/login",
+                "/api/login",
                 { ...inputValue },
                 { withCredentials: true }
             )

@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt')
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser")
-
 const path = require('path')
 require('dotenv').config();
 
@@ -31,11 +30,11 @@ mongoose.connect(atlasConnectionUri, {
 });
 
 app.get('/', async (req, res) => {
-try {
-    res.status(200).json({message: "Welcome to Home Route 🏠"})
-} catch (error) {
-     res.status(500).json({message: "Error in Home Route ❌"})
-}
+    try {
+        res.status(200).json({ message: "Welcome to Home Route 🏠" })
+    } catch (error) {
+        res.status(500).json({ message: "Error in Home Route ❌" })
+    }
 });
 
 
