@@ -32,15 +32,9 @@ mongoose.connect(atlasConnectionUri, {
     dbName: 'subjects'
 });
 
-if (process.env.NODE_ENV === 'production') {
-    app.get('*', (req, res) => {
+app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, 'dist', 'index.html'));
     });
-} else {
-    app.get('/', (req, res) => {
-        res.send("Hello");
-    })
-}
 
 app.listen(PORT, () => {
     console.log(`Server is Running at ${PORT}`);
