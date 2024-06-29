@@ -20,7 +20,7 @@ const Home = () => {
 
             try {
                 const response = await axios.post(
-                    "http://localhost:5173/api/",
+                    "/api/",
                     {},
                     { withCredentials: true }
                 );
@@ -38,6 +38,7 @@ const Home = () => {
                             localStorage.setItem('greeted', 'true');
                         }
                     } else {
+                        console.error(error)
                         removeCookie("token");
                         navigate('/login');
                     }
@@ -56,7 +57,6 @@ const Home = () => {
         removeCookie("token");
         navigate("/signup");
     };
-
 
     return (
         <>

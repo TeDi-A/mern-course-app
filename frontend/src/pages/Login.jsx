@@ -35,9 +35,9 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-
+            // `${baseURL}/login`
             const { data } = await axios.post(
-                "http://localhost:5173/api/login",
+                "/api/login",
                 { ...inputValue },
                 { withCredentials: true }
             )
@@ -88,7 +88,7 @@ const Login = () => {
                 <button type="submit">Submit</button>
                 <div>
                     <span>
-                        Don't have an account? 
+                        Don't have an account?
                         <Link to={"/signup"}> Signup</Link>
                     </span>
                 </div>

@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, } from "react-router-dom";
+import { useCookies } from "react-cookie";
 import { openDialog, closeDialog } from "../Components/Modal";
 
 function CoursePage() {
     const [message, setMessage] = useState([]);
+    const [username, setUsername] = useState('');
+    const [cookies, removeCookie] = useCookies(['token']);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const loadCourses = async () => {
             try {
-                const response = await fetch("/api/all");
+                const response = await fetch(
+                    "/api/all"
+                );
                 const data = await response.json();
                 setMessage(data);
 
-                if (response && response.data) {
-                    const { user } = response.data;
-                    setUsername(user)
-                } else {
-                    removeCookie("token");
-                    navigate('/login');
-                }
             } catch (error) {
                 console.error("Failed to fetch courses:", error);
             }
         };
 
         loadCourses();
-    }, []);
+    }, [cookies, navigate, removeCookie]);
 
 
     return (

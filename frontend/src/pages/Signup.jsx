@@ -38,7 +38,7 @@ const Signup = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:5173/api/signup",
+                "/api/signup",
                 { ...inputValue },
                 { withCredentials: true }
             );

@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use('/api', classRoutes)
-app.use("/api", authRoute);
+app.use('/api', authRoute);
 
 const atlasConnectionUri = process.env.MONGODB_URL;
 mongoose.connect(atlasConnectionUri, {
@@ -44,6 +44,8 @@ if (process.env.NODE_ENV === 'production') {
         res.send("Hello");
     })
 }
+
+
 
 app.listen(PORT, () => {
     console.log(`Server is Running at ${PORT}`);
