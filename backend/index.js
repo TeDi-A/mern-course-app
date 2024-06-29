@@ -30,6 +30,14 @@ mongoose.connect(atlasConnectionUri, {
     dbName: 'subjects'
 });
 
+app.get('/', async (req, res)) => {
+try {
+    res.status(200).json({message: "Welcome to Home Route 🏠"})
+} catch (error) {
+     res.status(500).json({message: "Error in Home Route ❌"})
+}
+});
+
 app.listen(PORT, () => {
     console.log(`Server is Running at ${PORT}`);
 });
