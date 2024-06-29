@@ -20,7 +20,7 @@ const Home = () => {
 
             try {
                 const response = await axios.post(
-                    "/api/",
+                    "api/",
                     {},
                     { withCredentials: true }
                 );
