@@ -14,8 +14,6 @@ const authRoute = require("./routes/AuthRoutes");
 
 const PORT = process.env.PORT || 4000;
 
-app.use(express.static(__dirname + "/dist"))
-
 mongoose.connection.on('connected', () => {
     console.log('Connected to MongoDB Atlas');
 });
@@ -32,18 +30,13 @@ mongoose.connect(atlasConnectionUri, {
     dbName: 'subjects'
 });
 
-
-if (process.env.NODE_ENV === 'production') {
-    const __dirname = path.resolve();
-    app.use(express.static(__dirname + "/dist"))
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-    });
-} else {
-    app.get('/', (req, res) => {
-        res.send("Hello");
-    })
+app.get('/', async (req, res) => {
+try {
+    res.status(200).json({message: "Welcome to Home Route 🏠"})
+} catch (error) {
+     res.status(500).json({message: "Error in Home Route ❌"})
 }
+});
 
 
 
