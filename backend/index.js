@@ -30,7 +30,7 @@ mongoose.connect(atlasConnectionUri, {
     dbName: 'subjects'
 });
 
-app.get('/', async (req, res)) => {
+app.get('/', async (req, res) => {
 try {
     res.status(200).json({message: "Welcome to Home Route 🏠"})
 } catch (error) {
