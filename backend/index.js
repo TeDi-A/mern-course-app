@@ -14,7 +14,7 @@ const authRoute = require("./routes/AuthRoutes");
 
 const PORT = process.env.PORT || 4000;
 
-app.use(express.static(__dirname, '/dist'));
+app.use(express.static(__dirname + '/dist'));
 
 mongoose.connection.on('connected', () => {
     console.log('Connected to MongoDB Atlas');
