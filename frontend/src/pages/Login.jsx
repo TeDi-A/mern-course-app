@@ -52,7 +52,7 @@ const Login = () => {
                 handleError(message);
             }
         } catch (error) {
-            console.log(error.response.data);
+            console.log(error);
         }
         setInputValue({
             ...inputValue,
