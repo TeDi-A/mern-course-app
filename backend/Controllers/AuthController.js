@@ -57,7 +57,8 @@ console.log('Request received:', req.body);
             withCredentials: true,
             httpOnly: false,
             secure: true,
-            sameSite: 'none'
+            sameSite: 'none',
+            path: "/"
         });
         console.log("Token cookie set:", token);
         res
