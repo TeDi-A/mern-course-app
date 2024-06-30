@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 
 const Home = () => {
-    const [cookies, removeCookie] = useCookies([]);
+    const [cookies, setCookies, removeCookie] = useCookies([]);
     const [username, setUsername] = useState('')
     const navigate = useNavigate()
 
@@ -23,6 +23,7 @@ const Home = () => {
                 if (response && response.data) {
                     const { status, user } = response.data;
                     setUsername(user)
+                    setCookies(cookies.token)
                     const greeted = localStorage.getItem('greeted');
                     if (!greeted) {
                         toast(`Hello ${user}`, { position: "top-right" });
