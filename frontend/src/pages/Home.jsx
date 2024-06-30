@@ -14,6 +14,7 @@ const Home = () => {
     useEffect(() => {
         const verifyCookie = async () => {
             if (!cookies.token) {
+                console.log('No token found, redirecting to login');
                 navigate("/login");
                 return;
             }
