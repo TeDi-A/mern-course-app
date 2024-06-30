@@ -12,16 +12,10 @@ const Home = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        const verifyCookie = async () => {
-            if (!cookies.token) {
-                console.log('No token found, redirecting to login');
-                navigate("/login");
-                return;
-            }
-
+                const verifyCookie = async () => {
             try {
                 const response = await axios.post(
-                    "https://mern-deploy-practice.onrender.com/api/",
+                    `${baseURL}/api`,
                     {},
                     { withCredentials: true }
                 );
@@ -29,25 +23,25 @@ const Home = () => {
                 if (response && response.data) {
                     const { status, user } = response.data;
                     setUsername(user)
-
-                    if (status) {
-                        // Check if the user has already been greeted
-                        const greeted = localStorage.getItem('greeted');
-                        if (!greeted) {
-                            toast(`Hello ${user}`, { position: "top-right" });
-                            // Set the greeted flag in local storage
-                            localStorage.setItem('greeted', 'true');
-                        }
-                    } else {
-                        console.error(error)
-                        removeCookie("token");
-                        navigate('/login');
+                    const greeted = localStorage.getItem('greeted');
+                    if (!greeted) {
+                        toast(`Hello ${user}`, { position: "top-right" });
+                        localStorage.setItem('greeted', 'true');
                     }
+                } else {
+                    console.error(error)
+                    removeCookie("token");
+                    navigate('/login');
                 }
             } catch (error) {
                 console.error("Error verifying cookie:", error);
                 removeCookie("token");
                 navigate('/login'); ``
+            }
+
+            if (!cookies.token) {
+                navigate("/login");
+                return;
             }
         };
 
