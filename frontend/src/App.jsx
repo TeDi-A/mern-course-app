@@ -12,7 +12,7 @@ function App() {
       <h1>MERN Stack Classes App</h1>
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/courses" element={<CoursePage />} />
