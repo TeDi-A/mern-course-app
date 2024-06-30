@@ -12,13 +12,7 @@ const Home = () => {
 
     useEffect(() => {
         const verifyCookie = async () => {
-            console.log('Cookies:', cookies);
-        if (!cookies.token) {
-console.log('No token found, redirecting to login');
-            navigate("/login");
-            return;
-        }
-            
+            console.log('Cookies:', cookies);            
             try {
                 const response = await axios.post(
                     "https://mern-deploy-practice.onrender.com/api/",
@@ -45,6 +39,14 @@ console.log('No token found, redirecting to login');
                 navigate('/login');
             }
         };
+
+        
+           if (!cookies.token) {
+            console.log('No token found, redirecting to login');
+            navigate("/login");
+            return;
+        }
+        
 
         verifyCookie();
     }, [cookies, navigate, removeCookie, setCookies]);
