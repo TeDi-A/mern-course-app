@@ -13,7 +13,8 @@ function CoursePage() {
         const loadCourses = async () => {
             try {
                 const response = await fetch(
-                    "https://divcourses.vercel.app/api/all"
+                "https://mern-deploy-practice.onrender.com/api/all"
+
                 );
                 const data = await response.json();
                 setMessage(data);
