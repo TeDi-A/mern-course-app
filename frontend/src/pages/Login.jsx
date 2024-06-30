@@ -46,7 +46,7 @@ const Login = () => {
             if (success) {
                 handleSuccess(message);
                 setTimeout(() => {
-                    navigate("/");
+                    navigate("https://mern-deploy-practice.onrender.com/api/");
                 }, 1000);
             } else {
                 handleError(message);
