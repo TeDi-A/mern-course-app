@@ -5,25 +5,31 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
+
 const Home = () => {
-    const [cookies, setCookies, removeCookie] = useCookies(['token']);
-    const [username, setUsername] = useState('')
-    const navigate = useNavigate()
+    const [cookies, setCookie, removeCookie] = useCookies(['token']);
+    const [username, setUsername] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const verifyCookie = async () => {
-            console.log('Cookies:', cookies);            
+            console.log('Cookies:', cookies);
+            if (!cookies.token) {
+                console.log('No token found, redirecting to login');
+                navigate("/login");
+                return;
+            }
+
             try {
                 const response = await axios.post(
                     "https://mern-deploy-practice.onrender.com/api/",
                     {},
                     { withCredentials: true }
                 );
-                console.log(response)
+                console.log(response);
                 if (response && response.data) {
                     const { status, user } = response.data;
                     setUsername(user);
-                    setCookies('token', cookies.token);
                     const greeted = localStorage.getItem('greeted');
                     if (!greeted) {
                         toast(`Hello ${user}`, { position: "top-right" });
@@ -40,16 +46,8 @@ const Home = () => {
             }
         };
 
-        
-           if (!cookies.token) {
-            console.log('No token found, redirecting to login');
-            navigate("/login");
-            return;
-        }
-        
-
         verifyCookie();
-    }, [cookies, navigate, removeCookie, setCookies]);
+    }, [cookies, navigate, removeCookie]);
 
     const Logout = () => {
         removeCookie("token");
