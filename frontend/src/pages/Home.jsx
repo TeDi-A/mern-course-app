@@ -39,13 +39,11 @@ const Home = () => {
                 removeCookie("token");
                 navigate('/login'); ``
             }
-
+             };
             if (!cookies.token) {
                 navigate("/login");
                 return;
             }
-        };
-
         verifyCookie();
     }, [cookies, navigate, setCookies, removeCookie]);
 
