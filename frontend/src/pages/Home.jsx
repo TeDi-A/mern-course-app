@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
-
 const Home = () => {
     const [cookies, setCookies, removeCookie] = useCookies(['token']);
     const [username, setUsername] = useState('')
@@ -41,6 +40,7 @@ const Home = () => {
         };
 
         if (!cookies.token) {
+console.log('No token found, redirecting to login');
             navigate("/login");
             return;
         }
