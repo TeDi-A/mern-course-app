@@ -23,7 +23,10 @@ app.use(cookieParser());
 
 app.use('/api', classRoutes)
 app.use('/api', authRoute);
-
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
 const atlasConnectionUri = process.env.MONGODB_URL;
 mongoose.connect(atlasConnectionUri, {
     dbName: 'subjects'
