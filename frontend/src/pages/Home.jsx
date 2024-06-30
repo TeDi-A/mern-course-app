@@ -15,7 +15,7 @@ const Home = () => {
                 const verifyCookie = async () => {
             try {
                 const response = await axios.post(
-                    `${baseURL}/api`,
+                    "https://mern-deploy-practice.onrender.com/api",
                     {},
                     { withCredentials: true }
                 );
