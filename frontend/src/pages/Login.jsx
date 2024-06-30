@@ -46,7 +46,7 @@ const Login = () => {
             if (success) {
                 handleSuccess(message);
                 setTimeout(() => {
-                    navigate("/home");
+                    navigate("/");
                 }, 1000);
             } else {
                 handleError(message);
