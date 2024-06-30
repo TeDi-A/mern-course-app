@@ -37,7 +37,7 @@ const Login = () => {
         try {
             // `${baseURL}/login`
             const { data } = await axios.post(
-                "/api/login",
+                "https://mern-deploy-practice.onrender.com/api/login",
                 { ...inputValue },
                 { withCredentials: true }
             )
