@@ -25,7 +25,7 @@ console.log('No token found, redirecting to login');
                     {},
                     { withCredentials: true }
                 );
-
+                console.log(response)
                 if (response && response.data) {
                     const { status, user } = response.data;
                     setUsername(user);
