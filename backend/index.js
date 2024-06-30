@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser")
 const path = require('path')
+const cors = require('cors')
 require('dotenv').config();
 
 const app = express();
@@ -15,6 +16,21 @@ const PORT = process.env.PORT || 4000;
 
 mongoose.connection.on('connected', () => {
     console.log('Connected to MongoDB Atlas');
+});
+
+
+app.use(cors({
+    origin: "http://localhost:5173", 
+    credentials: true, 
+    optionsSuccessStatus: 200
+}));
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    next();
 });
 
 app.use(express.json());
