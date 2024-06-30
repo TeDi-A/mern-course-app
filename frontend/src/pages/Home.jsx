@@ -47,7 +47,7 @@ const Home = () => {
         };
 
         verifyCookie();
-    }, [cookies, navigate, removeCookie,]);
+    }, [cookies, navigate, setCookies, removeCookie]);
 
     const Logout = () => {
         removeCookie("token");
