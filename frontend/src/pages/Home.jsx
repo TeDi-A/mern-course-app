@@ -20,7 +20,7 @@ const Home = () => {
 
             try {
                 const response = await axios.post(
-                    "/api",
+                    "https://mern-deploy-practice.onrender.com/api",
                     {},
                     { withCredentials: true }
                 );
