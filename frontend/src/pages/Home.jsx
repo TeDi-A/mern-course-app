@@ -12,45 +12,47 @@ const Home = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-                const verifyCookie = async () => {
+        const verifyCookie = async () => {
             try {
                 const response = await axios.post(
-                    "https://mern-deploy-practice.onrender.com/api",
+                    "https://mern-deploy-practice.onrender.com/api/verify-token", // Assuming this is the endpoint to verify token
                     {},
                     { withCredentials: true }
                 );
 
                 if (response && response.data) {
                     const { status, user } = response.data;
-                    setUsername(user)
-                    setCookies('token', cookies.token)
+                    setUsername(user);
+                    setCookies('token', cookies.token);
                     const greeted = localStorage.getItem('greeted');
                     if (!greeted) {
                         toast(`Hello ${user}`, { position: "top-right" });
                         localStorage.setItem('greeted', 'true');
                     }
                 } else {
-                    console.error(error)
                     removeCookie("token");
                     navigate('/login');
                 }
             } catch (error) {
                 console.error("Error verifying cookie:", error);
                 removeCookie("token");
-                navigate('/login'); ``
+                navigate('/login');
             }
-             };
-            if (!cookies.token) {
-                navigate("/login");
-                return;
-            }
+        };
+
+        if (!cookies.token) {
+            navigate("/login");
+            return;
+        }
+
         verifyCookie();
-    }, [cookies, navigate, setCookies, removeCookie]);
+    }, [cookies, navigate, removeCookie, setCookies]);
 
     const Logout = () => {
         removeCookie("token");
         navigate("/signup");
     };
+
 
     return (
         <>
