@@ -55,7 +55,7 @@ console.log('Request received:', req.body);
         const token = createSecretToken(user._id);
         res.cookie("token", token, {
             withCredentials: true,
-            httpOnly: false,
+            httpOnly: true,
             sameSite: 'none',
             secure: true,
         });
