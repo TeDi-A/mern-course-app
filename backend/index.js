@@ -20,7 +20,7 @@ mongoose.connection.on('connected', () => {
 app.use(cors({
     origin: "https://divcourses.vercel.app",
     credentials: true,
-    exposedHeaders: "Set-Cookie"
+    exposedHeaders: ["Set-Cookie"]
 }))
 
 
