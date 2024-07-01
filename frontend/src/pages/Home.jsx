@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 
 const Home = () => {
-    const [cookies, setCookie, removeCookie] = useCookies(['token']);
+    const [cookies, setCookies, removeCookie] = useCookies(['token']);
     const [username, setUsername] = useState('');
     const navigate = useNavigate();
 
@@ -28,8 +28,9 @@ const Home = () => {
                 );
                 console.log(response);
                 if (response && response.data) {
-                    const { status, user } = response.data;
+                    const { status, user, token } = response.data;
                     setUsername(user);
+                    setCookies('token', token);
                     const greeted = localStorage.getItem('greeted');
                     if (!greeted) {
                         toast(`Hello ${user}`, { position: "top-right" });
@@ -47,7 +48,7 @@ const Home = () => {
         };
 
         verifyCookie();
-    }, [cookies, navigate, removeCookie]);
+    }, [cookies, navigate, setCookies, removeCookie]);
 
     const Logout = () => {
         removeCookie("token");
