@@ -14,11 +14,6 @@ const Home = () => {
     useEffect(() => {
         const verifyCookie = async () => {
             console.log('Cookies:', cookies);
-            if (!cookies.token) {
-                console.log('No token found, redirecting to login');
-                navigate("/login");
-                return;
-            }
 
             try {
                 const response = await axios.post(
