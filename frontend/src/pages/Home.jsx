@@ -14,18 +14,22 @@ const Home = () => {
     useEffect(() => {
         const verifyCookie = async () => {
             console.log('Cookies:', cookies);
+            if (!cookies.token) {
+                console.log('No token found, redirecting to login');
+                navigate("/login");
+                return;
+            }
 
             try {
                 const response = await axios.post(
                     "https://mern-deploy-practice.onrender.com/api/",
                     {},
-                    { withCredentials: true }
+                    { withCredentials: true}
                 );
                 console.log(response);
                 if (response && response.data) {
-                    const { status, user, token } = response.data;
+                    const { status, user } = response.data;
                     setUsername(user);
-                    setCookies('token', token);
                     const greeted = localStorage.getItem('greeted');
                     if (!greeted) {
                         toast(`Hello ${user}`, { position: "top-right" });
