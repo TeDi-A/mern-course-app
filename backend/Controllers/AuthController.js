@@ -55,8 +55,7 @@ console.log('Request received:', req.body);
         res.cookie("token", token, {
             withCredentials: true,
             httpOnly: true,
-            sameSite: 'none',
-            secure: true,
+ 
         });
         console.log("Token cookie set:", token);
         res
