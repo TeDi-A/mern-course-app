@@ -7,19 +7,11 @@ import { ToastContainer, toast } from "react-toastify";
 
 
 const Home = () => {
-    const [cookies, setCookies, removeCookie] = useCookies(['token']);
     const [username, setUsername] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
-        const verifyCookie = async () => {
-            console.log('Cookies:', cookies);
-            if (!cookies.token) {
-                console.log('No token found, redirecting to login');
-                navigate("/login");
-                return;
-            }
-
+        const verifyUser = async () => {
             try {
                 const response = await axios.post(
                     "https://mern-deploy-practice.onrender.com/api/",
@@ -40,20 +32,18 @@ const Home = () => {
                     navigate('/login');
                 }
             } catch (error) {
-                console.error("Error verifying cookie:", error);
                 removeCookie("token");
                 navigate('/login');
             }
         };
 
-        verifyCookie();
-    }, [cookies, navigate, setCookies, removeCookie]);
+        verifyUser();
+    }, [navigate]);
 
     const Logout = () => {
         removeCookie("token");
         navigate("/signup");
     };
-
 
     return (
         <>
