@@ -36,7 +36,6 @@ const getUsers = async (req, res) => {
 }
 
 const Login = async (req, res, next) => {
-
 console.log('Request received:', req.body);
     try {
         const { email, password } = req.body
